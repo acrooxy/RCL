@@ -1,0 +1,133 @@
+/*using   System;
+namespace MyApplication
+{
+    class Program
+    {
+        static void MyMethod()
+        {
+            Console.WriteLine("I just got executed!");
+        }
+        static void Main(string[] args)
+        {
+            MyMethod();
+        }
+    }
+}*/
+
+
+/*using System;
+
+namespace MyApplication
+{
+    class Program
+    {
+        static void MyMethod()
+        {
+            Console.WriteLine("I just got executed!");
+        }
+
+        static void Main(string[] args)
+        {
+            MyMethod();
+            MyMethod();
+            MyMethod();
+        }
+    }
+}*/
+
+
+/*using   System;
+namespace MyApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}*/
+
+
+/*using   System;
+namespace MyApplication
+{
+    class Program
+    {
+        static void Main()
+        {
+            var name ="Razvan";
+            Console.WriteLine($"Hello, {name}. It's a pleasure to meet you");
+        }
+    }
+}*/
+
+/*using System; 
+
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _10_BasicArithmetic
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a = 7;
+            int b = 3;
+
+            int sum = a + b;
+
+            Console.WriteLine("Sum= " + a + " + " + b + " = " +sum);
+        }
+    }
+}*/
+
+
+/*using System;
+
+namespace MyApplication
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      bool isCSharpFun = true;
+      bool isFishTasty = false;
+      Console.WriteLine(isCSharpFun);   // Outputs True
+      Console.WriteLine(isFishTasty);   // Outputs False    
+    }
+  }
+}*/
+
+/*using System;
+
+namespace MyApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+        string greeting = "Hello";
+        string greeting2 = "Nice to meet you!";
+        Console.WriteLine(greeting);
+        Console.WriteLine(greeting2);
+        }
+    }
+}*/
+
+/*using System;
+
+namespace Test
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+               string txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    Console.WriteLine("String text lenght is : " + txt.Length);
+        }
+    }
+}*/
