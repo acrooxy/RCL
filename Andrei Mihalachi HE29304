@@ -1,0 +1,150 @@
+global using global::System;
+
+class RockPaperScissors
+{
+    static void Main()
+    {
+        // Set console to use UTF-8 encoding to support more characters
+
+
+        string[] choices = { "Rock", "Paper", "Scissors" };
+        string[] asciiArt = {
+            @"
+    ______
+---'  ____)
+      (____)
+      (____)
+      (____)
+---.__(___)
+",  // Rock
+            @"
+    ______
+---'   ___)_____
+          ______)
+          _______)
+         _______)
+---.________)
+",  // Paper
+            @"
+    _______
+---'    ___)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+"   // Scissors
+        };
+
+        Random random = new Random();
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("♦♦♦ ROCK PAPER SCISSORS GAME ♦♦♦");
+            Console.WriteLine("\nChoose an option:");
+            Console.WriteLine("1)  Rock");
+            Console.WriteLine("2)  Paper");
+            Console.WriteLine("3)  Scissors");
+            Console.WriteLine("Press 'X' to exit.");
+            ConsoleKeyInfo key = Console.ReadKey();
+            Console.WriteLine("\n");
+            if (key.Key == ConsoleKey.X)
+            {
+                Console.WriteLine("Thanks for playing!");
+                break;
+            }
+            if (key.Key < ConsoleKey.D1 || key.Key > ConsoleKey.D3)
+            {
+                Console.WriteLine("Invalid choice! Please press 1, 2, or 3.");
+                Console.ReadLine();
+                continue;
+            }
+            int playerIndex = key.Key - ConsoleKey.D1; // Convert key to index (0,1,2)
+            string playerChoice = choices[playerIndex];
+            int computerIndex = random.Next(0, 3);
+            string computerChoice = choices[computerIndex];
+            Console.WriteLine("\n\n");
+
+            //player choice
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Player: {playerChoice}");
+            Console.WriteLine(asciiArt[playerIndex]);
+            Console.ResetColor();
+
+            //computer choice
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"Computer : {computerChoice}");
+            Console.WriteLine(asciiArt[computerIndex]);
+            Console.ResetColor();
+
+            string result;
+            if (playerIndex == computerIndex)
+            {
+                result = "It's a Tie!";
+            }
+            else if ((playerIndex == 0 && computerIndex == 2) || // Rock beats Scissors
+                     (playerIndex == 1 && computerIndex == 0) || // Paper beats Rock
+                     (playerIndex == 2 && computerIndex == 1))   // Scissors beats Paper
+            {
+                result = "You Win! ♫";
+            }
+            else
+            {
+                result = "You Lose! •";
+            }
+            PrintResult(result);
+            Console.WriteLine("\nPress any key to play again...");
+            Console.ReadKey();
+        }
+    }
+
+    static void PrintResult(string message)
+    {
+        string resultDisplay = "";
+        if (message.Contains("Win"))
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            resultDisplay = @"
+ ___________
+'.=====.'
+.-\:      /-.
+| (|:.     |) |
+'-|:.     |-'
+  \::.    /
+   '::. .'
+     ) (
+   .' '.
+------------
+)Oo WINNER! oO(
+";
+        }
+        else if (message.Contains("Lose"))
+        {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            resultDisplay = @"
+    ____
+  /      \
+ |  X  X  |
+ |   __   |
+ \/
+☼ DEFEATED! ☼
+";
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            resultDisplay = @"
+   _______
+ /         \
+|  =     =  |
+|     |     |
+ \    |    /
+  \o/
+◘ DRAW! ◘
+";
+        }
+
+        Console.WriteLine(resultDisplay);
+        Console.ResetColor();
+        Console.WriteLine($"      {message}");
+    }
+}
