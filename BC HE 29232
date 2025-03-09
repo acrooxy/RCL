@@ -1,0 +1,51 @@
+using System;
+
+namespace SwitchStatement
+{
+    class Swithcy
+    {
+        static void Main(string[] args)
+        {
+            bool continueProgram = true;
+            while (continueProgram)
+            {
+                Console.WriteLine("\nEnter a day of the week (or press <Ctrl> + Z and Enter to exit):");
+                string day = Console.ReadLine();
+
+                // Check for null (which happens when Ctrl+Z is pressed followed by Enter)
+                if (day == null)
+                {
+                    continueProgram = false;
+                    continue;
+                }
+
+                // Process the day input
+                day = day.ToLower().Trim();
+
+                switch (day)
+                {
+                    case "monday":
+                        Console.WriteLine($"Thanks. It seems {day} is the start of the work week");
+                        break;
+                    case "tuesday":
+                    case "wednesday":
+                    case "thursday":
+                        Console.WriteLine($"Thanks. It seems {day} is in the middle of the week");
+                        break;
+                    case "friday":
+                        Console.WriteLine($"Thanks. It seems {day} is the end of the work week");
+                        break;
+                    case "saturday":
+                    case "sunday":
+                        Console.WriteLine($"Thanks. It seems {day} is the Weekend!");
+                        break;
+                    default:
+                        Console.WriteLine($"Oh no {day} is NOT a Day, try again please!");
+                        break;
+                }
+            }
+
+            Console.WriteLine("Program exited. Thank you!");
+        }
+    }
+}
