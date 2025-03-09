@@ -1,0 +1,94 @@
+using System;
+
+namespace _2025._03._09_Yea
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                ProcessGrades();
+                Console.Clear();
+                Console.WriteLine("Do you want to enter grades again? (y/n):");
+                string response = Console.ReadLine().Trim().ToLower();
+                if (response != "y")
+                {
+                    break;
+                }
+            }
+        }
+
+        static void ProcessGrades()
+        {
+            int total = 0;
+
+            int gradeCounter = 0;
+            int aCount = 0;
+            int bCount = 0;
+            int cCount = 0;
+            int dCount = 0;
+            int fCount = 0;
+
+            Console.WriteLine("Enter the integer grades in the range 0-100.");
+            Console.WriteLine("Type <Ctrl> + Z and press enter to terminate input:");
+
+            string input;
+            while ((input = Console.ReadLine()) != null)
+            {
+                int grade;
+                if (int.TryParse(input, out grade))
+                {
+                    total += grade;
+                    ++gradeCounter;
+
+                    switch (grade / 10)
+                    {
+                        case 10:
+                        case 9:
+                            ++aCount;
+                            break;
+                        case 8:
+                            ++bCount;
+                            break;
+                        case 7:
+                            ++cCount;
+                            break;
+                        case 6:
+                            ++dCount;
+                            break;
+                        default:
+                            ++fCount;
+                            break;
+                    }
+                    //Console.ReadLine();;
+                    {
+                        
+
+                        if (gradeCounter != 0)
+                        {
+                            double average = (double)total / gradeCounter;
+
+                            Console.Write($"Total of the {gradeCounter} grades entered is {total}");
+                            Console.WriteLine($"Class aveag is {average:F}");
+                            Console.WriteLine($"Class average is {average:F}");
+                            Console.WriteLine("Number of students who received each grade:");
+                            Console.WriteLine($"A: {aCount}"); // display number of A grades
+                            Console.WriteLine($"B: {bCount}"); // display number of B grades
+                            Console.WriteLine($"C: {cCount}"); // display number of C grades
+                            Console.WriteLine($"D: {dCount}"); // display number of D grades
+                            Console.WriteLine($"F: {fCount}"); // display number of F grades
+                            //Console.WriteLine("\n Grade Report:");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input. Please enter a valid integer grad");
+                        }
+                    }
+                    }
+                }
+
+            }
+        }
+    }
+
