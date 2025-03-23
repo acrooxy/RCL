@@ -1,0 +1,62 @@
+//The program generates a random number between 1 and 10 and the player then has to correctly guess the number!
+using System;
+namespace GuessGame
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Boolean flag to track whether the user has guessed the correct number
+            bool isCorrectGuess = false;
+
+            // Create a Random object to generate a random number
+            Random random = new Random();
+
+            // Generate a random number between 1 and 10 (inclusive)
+            int randomNum = random.Next(1, 11);
+
+            // Welcome message to introduce the game to the user
+            Console.WriteLine("Welcome to the number guessing name");
+            Console.WriteLine("A number between 1 and 10 will be generated.");
+            Console.WriteLine("If you guess the correct number, you win!");
+
+            // Loop continues until the user guesses the correct number
+            while (!isCorrectGuess)
+            {
+                // Prompt the user to enter their guess
+                Console.WriteLine("Please enter your guess:");
+
+                // Read user input and convert it to an integer
+                int guess = Convert.ToInt32(Console.ReadLine());
+
+                // Check if the user's guess is higher than the random number
+                if (guess > randomNum)
+                {
+                    // Inform the user that their guess is too high
+                    Console.WriteLine("Your guess is too high.");
+                }
+
+                // Check if the user's guess is lower than the random number
+                else if (guess < randomNum)
+                {
+                    // Inform the user that their guess is too low
+                    Console.WriteLine("Your guess is too low.");
+                }
+                else
+                {
+                    // Inform the user that their guess is correct
+                    Console.WriteLine("Correct!");
+
+                    // Set the flag to true to exit the loop
+                    isCorrectGuess = true;
+                }
+
+            }
+            // Congratulate the user for winning the game after correctly guessing the number
+            Console.WriteLine("Congratulations, you have won the game!");
+
+            // Wait for the user to press a key before closing the console window
+            Console.ReadKey();
+        }
+    }
+}
