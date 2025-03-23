@@ -1,0 +1,42 @@
+using System;
+
+class SnakeLadderGame
+{
+    static int[] board = new int[100];
+    static int player1Pos = 0, player2Pos = 0;
+    static Random rand = new Random();
+    static bool isPlayer1Turn = true;
+
+    static void Main()
+    {
+        Console.WriteLine("Welcome to Snake and Ladder Game!");
+        while (true)
+        {
+            Console.WriteLine($"{(isPlayer1Turn ? "Player 1" : "Player 2")}, press Enter to roll the dice.");
+            Console.ReadLine();
+            int roll = rand.Next(1, 7);
+            Console.WriteLine($"Rolled a {roll}!");
+            MovePlayer(roll);
+            if (player1Pos >= 99 || player2Pos >= 99)
+            {
+                Console.WriteLine($"{(player1Pos >= 99 ? "Player 1" : "Player 2")} wins!");
+                break;
+            }
+            isPlayer1Turn = !isPlayer1Turn;
+        }
+    }
+
+    static void MovePlayer(int roll)
+    {
+        if (isPlayer1Turn)
+        {
+            player1Pos = Math.Min(99, player1Pos + roll);
+            Console.WriteLine($"Player 1 moves to {player1Pos + 1}");
+        }
+        else
+        {
+            player2Pos = Math.Min(99, player2Pos + roll);
+            Console.WriteLine($"Player 2 moves to {player2Pos + 1}");
+        }
+    }
+}
