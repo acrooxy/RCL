@@ -1,0 +1,101 @@
+/*
+PSEUDO CODE
+
+START
+
+1. Define a function called Fibonacci that takes one integer argument: n
+
+2. If n == 0
+      Return 0
+
+3. If n == 1
+      Return 1
+
+4. Declare variables:
+      a ← 0      // first Fibonacci number
+      b ← 1      // secod Fibonacci number
+      result ← 0 // temporary variable to store Fibonacci values
+
+5. For i from 2 to n (inclusive), do:
+      result ← a + b
+      a ← b
+      b ← result
+
+6. Return result
+
+END
+
+*/
+
+// CODE
+using System;
+// Define the main class of the program
+class Program
+{
+    // n-th Fibonacci number
+    static int Fibonacci(int n)
+    {
+        // if n is 0 return 0
+        if (n == 0)
+            return 0;
+
+        // if n is 1 return 1 
+        if (n == 1)
+            return 1;
+
+        // initialize variable 'a' as 0, representing F0
+        int a = 0;
+
+        // initialize variable 'b' as 1, representing F1
+        int b = 1;
+
+        // variable to store the result of Fibonacci
+        int result = 0;
+
+        // loop from 2 to n to calculate Fibonacci numbers iteratively
+        for (int i = 2; i <= n; i++)
+        {
+            // current Fibonacci number is the sum of the previous two
+            result = a + b;
+
+            // shift values b becomes the a
+            a = b;
+            b = result;
+        }
+
+        // return the n-th Fibonacci number
+        return result;
+    }
+
+    // main method – the entry point of the program
+    static void Main(string[] args)
+    {
+        // prompt the user to enter the position of the Fibonacci number
+        Console.Write("Enter the position of the Fibonacci number: ");
+
+        // read the user's input as a string
+        string input = Console.ReadLine();
+
+        // declare a variable to store the parsed integer
+        int n;
+
+        // try to parse the input as a nonnegative integer
+        if (int.TryParse(input, out n) && n >= 0)
+        {
+            // if parsing is successful calculate the Fibonacci number
+            int result = Fibonacci(n);
+
+            // display the result to the user
+            Console.WriteLine($"Fibonacci({n}) = {result}");
+        }
+        else
+        {
+            // if input is invalid, display an error message
+            Console.WriteLine("Invalid input. Please enter a non-negative integer.");
+        }
+
+        // Wait for the user to press a key before exiting the program
+        Console.WriteLine("Press any key to exit");
+        Console.ReadKey();
+    }
+}
