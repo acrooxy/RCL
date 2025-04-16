@@ -1,0 +1,93 @@
+using System;
+
+class QuizGame //is the main "container" of this program.
+{
+    static void Main() //  entry point of this application, the program starts running from here.
+    {
+        int score = 0; // Initializes a variable score to track the number of correct answers the player gets.
+
+
+
+        // creating a list, defining quiz questions and answers 
+        List<(string question, string[] options, int correctOption)> quiz = new List<(string, string[], int)>
+        {
+            ("Which country has the tallest mountain on Earth?", new string[] { "1) China", "2) India", "3) Nepal", "4) Thailand" }, 3 ),
+            ("Who is known as the Father of Computers?", new string[] { "1) Charles Babbage", "2) Alan Turing", "3) Bill Gates", "4) Elon Musk" }, 1),
+            ("What year did the Titanic sink?", new string[] { "1) 1910", "2) 1912", "3) 1915", "4) 1916" }, 2),
+            ("What is the Capital of Australia?", new string[] { "1) Sydney", "2) Melbourne", "3) Brisbane", "4) Canberra" }, 4),
+            ("In which year did World War II end?", new string[] { "1) 1925", "2) 1935", "3) 1945", "4) 1955" }, 3),
+            ("Which instrument has 88 keys?", new string[] { "1) Guitar", "2) Violin", "3) Flute", "4) Piano" }, 4),
+            ("Where is the birthplace of Buddha?", new string[] { "1) India", "2) Bhutan", "3) Nepal", "4) China" }, 3),
+            ("What is the Capital of Canada?", new string[] { "1) Toronto", "2) Vancouver", "3) Montreal", "4) Ottawa" }, 4),
+        };
+        Console.WriteLine(" ");  // NOTE: This is For line space
+        Console.WriteLine(" Welcome to the Quiz Game!"); // Greetings
+        Console.WriteLine(" *----*----*----*----*----* ");
+
+        for (int i = 0; i < quiz.Count; i++) // This loop goes through each question in the quiz.
+
+        {
+            // Prints the question number and the actual question text.
+            Console.WriteLine($"\nQuestion {i + 1}: {quiz[i].question}");
+
+            foreach (string option in quiz[i].options)//Loops through the array of options and displays each one.
+
+
+            {
+                Console.WriteLine(option);
+            }
+
+            Console.Write("Your answer (1-4) and Press enter. ");// Asks player for their answer and stores it as a string.
+            string input = Console.ReadLine();
+
+            int userAnswer;
+            //  convert the input into an integer.
+            if (int.TryParse(input, out userAnswer))
+            {
+                if (userAnswer == quiz[i].correctOption)// Compares the player's answer to the correct answer.
+
+
+                {
+                    Console.WriteLine(" ");
+                    Console.WriteLine(" Correct!");// if they match
+                    score++;
+                }
+                else
+                {
+                    Console.WriteLine(" ");
+                    // if they don't match
+                    Console.WriteLine($" Wrong! The correct answer was option {quiz[i].correctOption}.");
+                }
+            }
+            else
+            {
+                //if the player didn't enter a valid number, this message is shown and the question is skipped.
+                Console.WriteLine(" Invalid input. Skipping question.");
+            }
+        }
+
+        Console.WriteLine("\n Quiz Over!");// After all questions are answered, this shows the final score.
+        Console.WriteLine(" ");
+        Console.WriteLine($"You got {score} out of {quiz.Count} correct.");
+        Console.WriteLine(" ");
+        Console.WriteLine("\nPress any key to exit...");
+        Console.ReadKey(); // Waits for the player to press any key before closing the console window.
+
+        
+        
+        // Code Part	              Purpose
+
+        // class QuizGame             Defines the structure of the program
+        // Main() method              Entry point where the game starts
+        // score variable             Tracks how many questions were answered correctly
+        // List<...> quiz             Holds all questions, options, and answers
+        // for loop                   Goes through each question
+        // Console.WriteLine()        Displays text in the console
+        // Console.ReadLine()         Gets input from the user
+        // int.TryParse()             Safely converts input to number
+        // if/else blocks             Checks if the answer is correct, wrong or invalid
+        // Console.ReadKey()          Waits before closing the program
+
+
+    }
+}
