@@ -1,0 +1,48 @@
+BEGIN PROGRAM
+
+LOOP until user chooses "Exit"
+
+    DISPLAY menu:
+        1 - Odd or Even Checker
+        2 - Simple Calculator
+        3 - Celsius to Fahrenheit
+        4 - Factorial Calculator
+        5 - Exit
+
+    READ user choice
+
+    SWITCH choice
+        CASE "1":
+            PROMPT for number
+            IF number mod 2 = 0 THEN
+                DISPLAY "Even"
+            ELSE
+                DISPLAY "Odd"
+
+        CASE "2":
+            PROMPT for first number
+            PROMPT for operator (+ - * /)
+            PROMPT for second number
+            CALCULATE result based on operator
+            DISPLAY result
+
+        CASE "3":
+            PROMPT for Celsius value
+            CONVERT to Fahrenheit
+            DISPLAY Fahrenheit
+
+        CASE "4":
+            PROMPT for number
+            CALCULATE factorial using loop
+            DISPLAY factorial
+
+        CASE "5":
+            DISPLAY "Goodbye"
+            EXIT loop
+
+        DEFAULT:
+            DISPLAY "Invalid option"
+
+END LOOP
+
+END PROGRAM
