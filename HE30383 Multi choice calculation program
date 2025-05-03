@@ -1,0 +1,88 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        bool running = true;
+
+        while (running)
+        {
+            // Show Menuy
+            Console.WriteLine("\n--- Simple Multi-Function Program ---");
+            Console.WriteLine("1. Check if number is odd or even");
+            Console.WriteLine("2. Simple Calculator");
+            Console.WriteLine("3. Temperature Converter (Celsius to Fahrenheit)");
+            Console.WriteLine("4. Factorial Calculator");
+            Console.WriteLine("5. Exit");
+            Console.Write("Choose an option (1-5): ");
+
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    // Odd or Even Checker
+                    Console.Write("Enter a number: ");
+                    int num = int.Parse(Console.ReadLine());
+                    if (num % 2 == 0)
+                        Console.WriteLine("The number is even.");
+                    else
+                        Console.WriteLine("The number is odd.");
+                    break;
+
+                case "2":
+                    // Simple Calculator 
+                    Console.Write("Enter first number: ");
+                    double a = double.Parse(Console.ReadLine());
+                    Console.Write("Enter operator (+, -, *, /): ");
+                    string op = Console.ReadLine();
+                    Console.Write("Enter second number: ");
+                    double b = double.Parse(Console.ReadLine());
+
+                    switch (op)
+                    {
+                        case "+": Console.WriteLine($"Result: {a + b}"); break;
+                        case "-": Console.WriteLine($"Result: {a - b}"); break;
+                        case "*": Console.WriteLine($"Result: {a * b}"); break;
+                        case "/":
+                            if (b != 0)
+                                Console.WriteLine($"Result: {a / b}");
+                            else
+                                Console.WriteLine("Cannot divide by zero.");
+                            break;
+                        default: Console.WriteLine("Invalid operator."); break;
+                    }
+                    break;
+
+                case "3":
+                    // Celsius to Fahrenheit Converter option
+                    Console.Write("Enter temperature in Celsius: ");
+                    double celsius = double.Parse(Console.ReadLine());
+                    double fahrenheit = (celsius * 9 / 5) + 32;
+                    Console.WriteLine($"Temperature in Fahrenheit: {fahrenheit}°F");
+                    break;
+
+                case "4":
+                    // Factorial Calculator optiom
+                    Console.Write("Enter a non-negative integer: ");
+                    int n = int.Parse(Console.ReadLine());
+                    long factorial = 1;
+                    for (int i = 2; i <= n; i++)
+                        factorial *= i;
+                    Console.WriteLine($"Factorial of {n} is {factorial}");
+                    break;
+
+                case "5":
+                    // Exit program if you want
+                    Console.WriteLine("Exiting program. Goodbye!");
+                    running = false;
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid option. Please try again.");
+                    break;
+            }
+        }
+    }
+}
