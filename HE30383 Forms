@@ -1,0 +1,35 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace WinFormsApp1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Set colors for button1
+            button1.BackColor = Color.LightGreen;
+            button1.ForeColor = Color.DarkGreen;
+
+            // Set colors for button2
+            button2.BackColor = Color.FromArgb(255, 200, 100);
+            button2.ForeColor = Color.DarkBlue;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Change button2 colors when clicked (optional)
+            button2.BackColor = Color.LightBlue;
+            button2.ForeColor = Color.DarkBlue;
+
+            // Display a message box
+            MessageBox.Show("Clicked buttonn 1!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
+}
