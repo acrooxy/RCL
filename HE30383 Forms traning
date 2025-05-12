@@ -1,0 +1,66 @@
+using System;
+using System.Diagnostics;
+using System.Windows.Forms;
+using System.Drawing;
+
+namespace _2025._05._11_Forms
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+            // Button 1 configuration
+            button1.Text = "Yes";
+            button1.BackColor = Color.Green;
+            button1.ForeColor = Color.Black;
+
+            // Button 2 configuration
+            button2.Text = "No";
+            button2.BackColor = Color.Red;
+            button2.ForeColor = Color.Black;
+
+            // TextBox configuration
+            textBox1.Text = "Should we go home?";
+            textBox1.ReadOnly = true; // Prevent editing
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You clicked Yes! ");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Replace the URL with the actual link to Regent College Southall RCL
+            string url = "https://www.regentcollege.uk/southall-campus";
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unable to open the link. Error: {ex.Message}");
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
